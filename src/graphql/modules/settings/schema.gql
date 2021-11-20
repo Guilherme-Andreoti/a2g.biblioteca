@@ -1,0 +1,23 @@
+type Setting {
+  _id: ID!
+  logo: String!
+  school_name: String!
+  default_rent_time_in_days: Int  
+  maximum_rent_time_in_days: Int
+}
+
+type Query {
+  settings: [Setting!]!
+  setting(id: ID!): Setting!
+}
+
+input SettingInput {
+  logo: String!
+  school_name: String!
+  default_rent_time_in_days: Int  
+  maximum_rent_time_in_days: Int
+}
+type Mutation {
+  createSetting(data: SettingInput): Setting!
+  updateSetting(id: ID, data: SettingInput): Setting!
+}

@@ -1,0 +1,26 @@
+type Comment {
+  _id: ID!
+  text: String!
+  score: Int!
+  book: Book!
+  author: User!
+  reviewed: Boolean
+}
+
+type Query {
+  comments: [Comment!]!
+  comment(id: ID!): Comment!
+}
+
+input CommentInput {
+  text: String!
+  score: Int!
+  book: ID!
+  author: ID!
+  reviewed: Boolean
+}
+type Mutation {
+  createComment(data: CommentInput): Comment!
+  updateComment(id: ID, data: CommentInput): Comment!
+  deleteComment(id: ID): Boolean
+}

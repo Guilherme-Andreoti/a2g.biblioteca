@@ -1,0 +1,19 @@
+type Gender {
+  _id: ID!
+  name: String!
+}
+
+input GenderInput {
+  name: String!
+}
+
+type Query {
+  genders: [Gender!]!
+  gender(id: ID!): Gender!
+}
+
+type Mutation {
+  createGender(data: GenderInput): Gender!
+  updateGender(id: ID, data: GenderInput): Gender!
+  deleteGender(id: ID!): Boolean
+}

@@ -1,0 +1,28 @@
+scalar Date
+
+type Rent {
+  _id: ID!
+  start_date: Date!
+  preview_end_date: Date!
+  end_date: Date
+  book: Book!
+  user: User!
+}
+
+type Query {
+  rents: [Rent!]!
+  rent(id: ID!): Rent!
+}
+
+input RentInput {
+  start_date: Date!
+  preview_end_date: Date!
+  end_date: Date
+  book: ID!
+  user: ID!
+}
+type Mutation {
+  createRent(data: RentInput): Rent!
+  updateRent(id: ID, data: RentInput): Rent!
+  deleteRent(id: ID): Boolean
+}

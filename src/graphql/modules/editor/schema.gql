@@ -1,0 +1,21 @@
+type Editor {
+  _id: ID!
+  name: String!
+  description: String
+}
+
+input EditorInput {
+  name: String!
+  description: String
+}
+
+type Query {
+  editors: [Editor!]!
+  editor(id: ID!): Editor!
+}
+
+type Mutation {
+  createEditor(data: EditorInput): Editor!
+  updateEditor(id: ID, data: EditorInput): Editor!
+  deleteEditor(id: ID!): Boolean
+}
