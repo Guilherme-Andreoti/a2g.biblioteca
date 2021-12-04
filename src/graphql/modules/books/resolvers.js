@@ -3,6 +3,7 @@ import Author from "../../../models/Author";
 import Gender from "../../../models/Gender";
 import Editor from "../../../models/Editor";
 import Comment from "../../../models/comment";
+import Rent from "../../../models/Rent";
 
 export default {
   Query: {
@@ -16,6 +17,8 @@ export default {
     reviewedComments: async (book) =>
       await Comment.find({ book: book.id, reviewed: true }),
     comments: async (book) => await Comment.find({ book: book.id }),
+    rentedQuantity: async (book) => await Rent.find({ book: book.id, end_date: { $exists: false} }).count(),
+    stock: async (book) =>  book.stock - (await Rent.find({ book: book.id, end_date: { $exists: false} }).count())
   },
   Mutation: {
     createBook: async (_, { data }) => await Book.create(data),

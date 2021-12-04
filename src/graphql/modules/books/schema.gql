@@ -8,9 +8,9 @@ type Book {
   launch_year: Int  
   version: String!
   stock: Int!  
+  rentedQuantity: Int!  
   comments: [Comment!]!  
   reviewedComments: [Comment!]!  
-
 }
 
 type Query {
